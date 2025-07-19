@@ -1,0 +1,13 @@
+{
+    // Critical, Error, Warning, Info, Verbose
+    "logVerbosity": "Verbose",
+    // Configuration of the available inference servers and the type of actions that can use those inference servers
+    "inferenceServersSettings": [
+        {
+            "inferenceServerActionTypes": [
+                "MainChat"
+            ],
+            "webApiUrl": "http://127.0.0.1:5001/api/v1"
+        }
+    ]
+}

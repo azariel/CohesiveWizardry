@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CohesiveWizardry.Core", "CohesiveWizardry.Core\CohesiveWizardry.Core.csproj", "{89010371-815B-BCDC-EBDD-F293F26FD1B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CohesiveWizardry.Common", "CohesiveWizardry.Common\CohesiveWizardry.Common.csproj", "{5040D40D-CA4E-4BBD-B14E-9F6781D5E017}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CohesiveWizardry.Storage.Dtos", "CohesiveWizardry.Storage.Dtos\CohesiveWizardry.Storage.Dtos.csproj", "{BBD737EF-60B3-476D-AD7F-C31133BBFD42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CohesiveWizardry.Storage.WebApi", "CohesiveWizardry.Storage.WebApi\CohesiveWizardry.Storage.WebApi.csproj", "{2E375345-5EBB-4977-8481-E577FDC12A30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CohesiveWizardry.WebApi", "CohesiveWizardry.WebApi\CohesiveWizardry.WebApi.csproj", "{C7EC09AE-9D95-4D90-8C64-949AF8DEBB2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89010371-815B-BCDC-EBDD-F293F26FD1B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89010371-815B-BCDC-EBDD-F293F26FD1B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89010371-815B-BCDC-EBDD-F293F26FD1B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89010371-815B-BCDC-EBDD-F293F26FD1B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5040D40D-CA4E-4BBD-B14E-9F6781D5E017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5040D40D-CA4E-4BBD-B14E-9F6781D5E017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5040D40D-CA4E-4BBD-B14E-9F6781D5E017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5040D40D-CA4E-4BBD-B14E-9F6781D5E017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBD737EF-60B3-476D-AD7F-C31133BBFD42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBD737EF-60B3-476D-AD7F-C31133BBFD42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBD737EF-60B3-476D-AD7F-C31133BBFD42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBD737EF-60B3-476D-AD7F-C31133BBFD42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E375345-5EBB-4977-8481-E577FDC12A30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E375345-5EBB-4977-8481-E577FDC12A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E375345-5EBB-4977-8481-E577FDC12A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E375345-5EBB-4977-8481-E577FDC12A30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7EC09AE-9D95-4D90-8C64-949AF8DEBB2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7EC09AE-9D95-4D90-8C64-949AF8DEBB2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7EC09AE-9D95-4D90-8C64-949AF8DEBB2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7EC09AE-9D95-4D90-8C64-949AF8DEBB2F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BBD737EF-60B3-476D-AD7F-C31133BBFD42} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{2E375345-5EBB-4977-8481-E577FDC12A30} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {306F3F1A-2F84-494E-8D79-47AB40477721}
+	EndGlobalSection
+EndGlobal

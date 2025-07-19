@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Authors>Azariel</Authors>
+    <Copyright>@Azariel</Copyright>
+    <FileVersion>1.0.0.0</FileVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <PackageReleaseNotes>https://github.com/azariel/CohesiveWizardry</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CohesiveWizardry.Common\CohesiveWizardry.Common.csproj" />
+    <ProjectReference Include="..\CohesiveWizardry.Storage.Dtos\CohesiveWizardry.Storage.Dtos.csproj" />
+  </ItemGroup>
+
+</Project>
