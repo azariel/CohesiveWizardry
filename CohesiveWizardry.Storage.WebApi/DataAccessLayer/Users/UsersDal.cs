@@ -101,7 +101,7 @@ namespace CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users
         }
 
         /// <inheritdoc />
-        public async Task<GetUserResponseDto> TryGetUserAsync(string userId)
+        public async Task<GetUserResponseDto> GetUserAsync(string userId)
         {
             if (string.IsNullOrWhiteSpace(userId))
                 throw new ArgumentNullException(nameof(userId));
@@ -140,13 +140,12 @@ namespace CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users
         }
 
         /// <inheritdoc />
-        public async Task<AddUserResponseDto> TryAddUserAsync(AddUserRequestDto addUserDto)
+        public async Task<AddUserResponseDto> AddUserAsync(AddUserRequestDto addUserDto)
         {
             if (addUserDto == null)
                 throw new ArgumentNullException(nameof(addUserDto));
 
             var utcNow = DateTime.UtcNow;
-            addUserDto.Id = Guid.NewGuid().ToString();
             addUserDto.CreatedAtUtc = utcNow;
             addUserDto.LastModifiedAtUtc = utcNow;
             addUserDto.Revision = 0;
@@ -188,7 +187,7 @@ namespace CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users
         }
 
         /// <inheritdoc />
-        public async Task<UpdateUserResponseDto> TryUpdateUserAsync(UpdateUserRequestDto updateUserDto)
+        public async Task<UpdateUserResponseDto> UpdateUserAsync(UpdateUserRequestDto updateUserDto)
         {
             if (updateUserDto == null)
                 throw new ArgumentNullException(nameof(updateUserDto));
@@ -242,7 +241,7 @@ namespace CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users
         }
 
         /// <inheritdoc />
-        public async Task<bool> TryDeleteUserAsync(string userId)
+        public async Task<bool> DeleteUserAsync(string userId)
         {
             if (string.IsNullOrWhiteSpace(userId))
                 throw new ArgumentNullException(nameof(userId));

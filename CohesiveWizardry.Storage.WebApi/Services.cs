@@ -1,5 +1,6 @@
 ﻿using CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users;
 using CohesiveWizardry.Storage.WebApi.Workflows;
+using CohesiveWizardry.Storage.WebApi.Workflows.Users;
 
 namespace CohesiveWizardry.Storage.WebApi
 {
@@ -11,7 +12,10 @@ namespace CohesiveWizardry.Storage.WebApi
         internal static void ConfigureServices(IServiceCollection services)
         {
             // Workflows
-            services.AddScoped<IUsersWorkflow, UsersWorkflow>();
+            services.AddScoped<IAddUserRequestWorkflow, AddUserRequestWorkflow>();
+            services.AddScoped<IGetUserRequestWorkflow, GetUserRequestWorkflow>();
+            services.AddScoped<IUpdateUserRequestWorkflow, UpdateUserRequestWorkflow>();
+            services.AddScoped<IDeleteUserRequestWorkflow, DeleteUserRequestWorkflow>();
 
             // Dals
             services.AddScoped<IUsersDal, UsersDal>();

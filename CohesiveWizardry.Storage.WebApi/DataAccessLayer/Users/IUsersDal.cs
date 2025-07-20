@@ -5,9 +5,9 @@ namespace CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users
 {
     public interface IUsersDal
     {
-        Task<GetUserResponseDto> TryGetUserAsync(string userId);
-        Task<AddUserResponseDto> TryAddUserAsync(AddUserRequestDto addUserDto);
-        Task<UpdateUserResponseDto> TryUpdateUserAsync(UpdateUserRequestDto updateUserDto);
-        Task<bool> TryDeleteUserAsync(string userId);
+        Task<GetUserResponseDto> GetUserAsync(string userId);
+        Task<AddUserResponseDto> AddUserAsync(AddUserRequestDto addUserDto);
+        Task<UpdateUserResponseDto> UpdateUserAsync(UpdateUserRequestDto updateUserDto);
+        Task<bool> DeleteUserAsync(string userId);
     }
 }

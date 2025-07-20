@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Cohesive_rp_storage_dtos.Requests.Users
 {
     /// <summary>
-    /// Represent a request to add a new user to the database.
+    /// Represent a request to get an existing user from the database.
     /// </summary>
     public class GetUserRequestDto : IStorageDto, IRequestDto
     {

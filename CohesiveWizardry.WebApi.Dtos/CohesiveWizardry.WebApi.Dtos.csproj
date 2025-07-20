@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>CohesiveWizardry.WebApi.Dtos</RootNamespace>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <Authors>Azariel</Authors>
     <Copyright>@Azariel</Copyright>
     <FileVersion>1.0.0.0</FileVersion>
@@ -12,13 +13,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CohesiveWizardry.Common\CohesiveWizardry.Common.csproj" />
-    <ProjectReference Include="..\CohesiveWizardry.Storage.Dtos\CohesiveWizardry.Storage.Dtos.csproj" />
-    <ProjectReference Include="..\CohesiveWizardry.WebApi.Dtos\CohesiveWizardry.WebApi.Dtos.csproj" />
   </ItemGroup>
 
 </Project>

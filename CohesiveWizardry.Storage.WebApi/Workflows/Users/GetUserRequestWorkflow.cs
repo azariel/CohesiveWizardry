@@ -2,25 +2,21 @@
 using CohesiveWizardry.Common.Diagnostics;
 using CohesiveWizardry.Common.Exceptions.HTTP;
 using CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users;
-using CohesiveWizardry.Storage.WebApi.RequestExecutors;
+using CohesiveWizardry.Storage.WebApi.Workflows.Users;
 
-namespace CohesiveRp_AI.Storage.RequestExecutors
+namespace CohesiveWizardry.Storage.WebApi.Workflows
 {
-    public class GetUserRequestExecutor : IMainRequestExecutor
+    public class GetUserRequestWorkflow : IGetUserRequestWorkflow
     {
-        private GetUserRequestDto getUserDto = null;
         private IUsersDal usersDal = null;
-        private object response = null;
 
-        public GetUserRequestExecutor(
-            IUsersDal usersDal,
-            GetUserRequestDto getUserDto)
+        public GetUserRequestWorkflow(
+            IUsersDal usersDal)
         {
-            this.getUserDto = getUserDto;
             this.usersDal = usersDal;
         }
 
-        public async Task<bool> ExecuteAsync()
+        public async Task<object> ExecuteAsync(GetUserRequestDto getUserDto)
         {
             LoggingManager.LogToFile($"a1d1800f-fac0-4840-b796-bcb166ee8d9d", $"Getting User with Id [{getUserDto?.UserId}].", logVerbosity: LoggingManager.LogVerbosity.Verbose);
 
@@ -30,12 +26,10 @@ namespace CohesiveRp_AI.Storage.RequestExecutors
             }
 
             // Get User from storage to check if it already exists
-            response = await usersDal.TryGetUserAsync(getUserDto.UserId);
+            var response = await usersDal.GetUserAsync(getUserDto.UserId);
             LoggingManager.LogToFile($"46864055-5c9e-480f-a11c-bfd53a6fcc67", $"User with Id [{getUserDto?.UserId}] was Get.", logVerbosity: LoggingManager.LogVerbosity.Verbose);
 
-            return true;
+            return response;
         }
-
-        public async Task<object> GetResponseAsync() => await Task.FromResult(response);
     }
 }

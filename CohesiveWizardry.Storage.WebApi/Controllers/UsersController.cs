@@ -1,6 +1,6 @@
 ﻿using Cohesive_rp_storage_dtos.Requests.Users;
 using CohesiveWizardry.Common.Exceptions.HTTP;
-using CohesiveWizardry.Storage.WebApi.Workflows;
+using CohesiveWizardry.Storage.WebApi.Workflows.Users;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CohesiveWizardry.Storage.WebApi.Controllers
@@ -12,11 +12,21 @@ namespace CohesiveWizardry.Storage.WebApi.Controllers
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
-        private IUsersWorkflow workflow;
+        private IAddUserRequestWorkflow addUserRequestWorkflow;
+        private IGetUserRequestWorkflow getUserRequestWorkflow;
+        private IUpdateUserRequestWorkflow updateUserRequestWorkflow;
+        private IDeleteUserRequestWorkflow deleteUserRequestWorkflow;
 
-        public UsersController(IUsersWorkflow workflow)
+        public UsersController(
+            IAddUserRequestWorkflow addUserRequestWorkflow,
+            IGetUserRequestWorkflow getUserRequestWorkflow,
+            IUpdateUserRequestWorkflow updateUserRequestWorkflow,
+            IDeleteUserRequestWorkflow deleteUserRequestWorkflow)
         {
-            this.workflow = workflow;
+            this.addUserRequestWorkflow = addUserRequestWorkflow;
+            this.getUserRequestWorkflow = getUserRequestWorkflow;
+            this.updateUserRequestWorkflow = updateUserRequestWorkflow;
+            this.deleteUserRequestWorkflow = deleteUserRequestWorkflow;
         }
 
         /// <summary>
@@ -36,7 +46,7 @@ namespace CohesiveWizardry.Storage.WebApi.Controllers
         [Route("{userId}")]
         public async Task<ActionResult<object>> GetUser(GetUserRequestDto userRequest)
         {
-            object response = await workflow.ExecuteAsync(userRequest);
+            object response = await getUserRequestWorkflow.ExecuteAsync(userRequest);
 
             if (response == null)
                 return NotFound();
@@ -50,7 +60,7 @@ namespace CohesiveWizardry.Storage.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<object>> AddUser([FromBody] AddUserRequestDto userRequest)
         {
-            object response = await workflow.ExecuteAsync(userRequest);
+            object response = await addUserRequestWorkflow.ExecuteAsync(userRequest);
             return response;
         }
 
@@ -65,7 +75,7 @@ namespace CohesiveWizardry.Storage.WebApi.Controllers
             if(userRequest.Id != UserIdToUpdate)
                 throw new BadRequestWebApiException("6b38144f-2b7f-44e9-aa7b-57e4dc05b0e6", $"UserId [{UserIdToUpdate}] to update didn't match the provided body UserId [{userRequest.Id}].");
 
-            object response = await workflow.ExecuteAsync(userRequest);
+            object response = await updateUserRequestWorkflow.ExecuteAsync(userRequest);
             return response;
         }
 
@@ -76,7 +86,7 @@ namespace CohesiveWizardry.Storage.WebApi.Controllers
         [Route("{userId}")]
         public async Task<ActionResult<object>> DeleteUser(DeleteUserRequestDto userRequest)
         {
-            object response = await workflow.ExecuteAsync(userRequest);
+            object response = await deleteUserRequestWorkflow.ExecuteAsync(userRequest);
             return response;
         }
     }

@@ -2,25 +2,21 @@
 using CohesiveWizardry.Common.Diagnostics;
 using CohesiveWizardry.Common.Exceptions.HTTP;
 using CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users;
-using CohesiveWizardry.Storage.WebApi.RequestExecutors;
+using CohesiveWizardry.Storage.WebApi.Workflows.Users;
 
-namespace CohesiveRp_AI.Storage.RequestExecutors
+namespace CohesiveWizardry.Storage.WebApi.Workflows
 {
-    public class UpdateUserRequestExecutor : IMainRequestExecutor
+    public class UpdateUserRequestWorkflow : IUpdateUserRequestWorkflow
     {
-        private UpdateUserRequestDto updateUserDto = null;
         private IUsersDal usersDal = null;
-        private object response = null;
 
-        public UpdateUserRequestExecutor(
-            IUsersDal usersDal,
-            UpdateUserRequestDto updateUserDto)
+        public UpdateUserRequestWorkflow(
+            IUsersDal usersDal)
         {
-            this.updateUserDto = updateUserDto;
             this.usersDal = usersDal;
         }
 
-        public async Task<bool> ExecuteAsync()
+        public async Task<object> ExecuteAsync(UpdateUserRequestDto updateUserDto)
         {
             LoggingManager.LogToFile($"76758e9e-10b7-4e6b-adc6-421aeddc71af", $"Updating User with Id [{updateUserDto?.Id}].", logVerbosity: LoggingManager.LogVerbosity.Verbose);
 
@@ -30,22 +26,18 @@ namespace CohesiveRp_AI.Storage.RequestExecutors
             }
 
             // Get User from storage to check if it already exists
-            var user = await usersDal.TryGetUserAsync(updateUserDto.Id);
+            var user = await usersDal.GetUserAsync(updateUserDto.Id);
 
             if (user == null)
             {
-                response = $"Can't update user. User with id [{updateUserDto.Id}] doesn't exists.";
-                return false;
+                return $"Can't update user. User with id [{updateUserDto.Id}] doesn't exists.";
             }
 
             // Update the new user
-            var userResult = await usersDal.TryUpdateUserAsync(updateUserDto);
+            var userResult = await usersDal.UpdateUserAsync(updateUserDto);
             LoggingManager.LogToFile($"47bf5139-042d-4fe4-a27d-e44db97c6377", $"User with Id [{updateUserDto?.Id}] was updated.", logVerbosity: LoggingManager.LogVerbosity.Verbose);
 
-            response = userResult;
-            return true;
+            return userResult;
         }
-
-        public async Task<object> GetResponseAsync() => await Task.FromResult(response);
     }
 }
