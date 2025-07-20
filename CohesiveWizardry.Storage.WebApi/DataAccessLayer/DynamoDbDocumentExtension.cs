@@ -24,6 +24,7 @@ namespace CohesiveWizardry.Storage.WebApi.DataAccessLayer
             string serializedValue = dataItem switch
             {
                 UserDto userDto => JsonSerializer.Serialize(userDto, serializerOptions),
+                InferenceRequestDto inferenceRequestDto => JsonSerializer.Serialize(inferenceRequestDto, serializerOptions),
                 _ => throw new Exception($"Type {dataItem.GetType()} is unhandled."),
             };
 

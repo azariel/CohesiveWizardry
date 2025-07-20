@@ -13,6 +13,9 @@ namespace CohesiveWizardry.Common.Configuration
         [JsonConverter(typeof(JsonStringEnumConverter))]
         public LogVerbosity LogVerbosity { get; set; }
 
+        [JsonPropertyName("storageSettings")]
+        public StorageSettings StorageSettings { get; set; }
+
         [JsonPropertyName("inferenceServersSettings")]
         public List<InferenceServerSettings> InferenceServersSettings { get; set; }
     }

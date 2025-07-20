@@ -2,7 +2,7 @@
 using CohesiveWizardry.Common.Diagnostics;
 using CohesiveWizardry.Common.Exceptions.HTTP;
 using CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users;
-using CohesiveWizardry.Storage.WebApi.Workflows.Users;
+using CohesiveWizardry.Storage.WebApi.Workflows.Users.Abstractions;
 
 namespace CohesiveWizardry.Storage.WebApi.Workflows
 {

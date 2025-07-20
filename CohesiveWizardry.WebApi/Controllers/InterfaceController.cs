@@ -1,27 +1,27 @@
 ﻿using Cohesive_rp_storage_dtos.Requests.Users;
 using CohesiveWizardry.Common.Exceptions.HTTP;
-using CohesiveWizardry.WebApi.Workflows;
+using CohesiveWizardry.WebApi.Workflows.InterfaceAIReplyRequest.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CohesiveWizardry.Storage.WebApi.Controllers
 {
     /// <summary>
-    /// Controller around the Main Api
+    /// Controller around the Api offering interactions between the User and the Backend
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class MainController : Controller
+    public class InterfaceController : Controller
     {
-        private IMainAddAIReplyRequestWorkflow mainAddAIReplyRequestWorkflow;
-        private IMainGetAIReplyRequestWorkflow mainGetAIReplyRequestWorkflow;
-        private IMainUpdateAIReplyRequestWorkflow mainUpdateAIReplyRequestWorkflow;
-        private IMainDeleteAIReplyRequestWorkflow mainDeleteAIReplyRequestWorkflow;
+        private IInterfaceAddAIReplyRequestWorkflow mainAddAIReplyRequestWorkflow;
+        private IInterfaceGetAIReplyRequestWorkflow mainGetAIReplyRequestWorkflow;
+        private IInterfaceUpdateAIReplyRequestWorkflow mainUpdateAIReplyRequestWorkflow;
+        private IInterfaceDeleteAIReplyRequestWorkflow mainDeleteAIReplyRequestWorkflow;
 
-        public MainController(
-            IMainAddAIReplyRequestWorkflow mainAddAIReplyRequestWorkflow,
-            IMainGetAIReplyRequestWorkflow mainGetAIReplyRequestWorkflow,
-            IMainUpdateAIReplyRequestWorkflow mainUpdateAIReplyRequestWorkflow,
-            IMainDeleteAIReplyRequestWorkflow mainDeleteAIReplyRequestWorkflow)
+        public InterfaceController(
+            IInterfaceAddAIReplyRequestWorkflow mainAddAIReplyRequestWorkflow,
+            IInterfaceGetAIReplyRequestWorkflow mainGetAIReplyRequestWorkflow,
+            IInterfaceUpdateAIReplyRequestWorkflow mainUpdateAIReplyRequestWorkflow,
+            IInterfaceDeleteAIReplyRequestWorkflow mainDeleteAIReplyRequestWorkflow)
         {
             this.mainAddAIReplyRequestWorkflow = mainAddAIReplyRequestWorkflow;
             this.mainGetAIReplyRequestWorkflow = mainGetAIReplyRequestWorkflow;
@@ -40,9 +40,10 @@ namespace CohesiveWizardry.Storage.WebApi.Controllers
         }
 
         /// <summary>
-        /// Add new request to memory.
+        /// Add new request to generate an AI reply.
         /// </summary>
         [HttpPost]
+        [Route("AIReplyRequest")]
         public async Task<ActionResult<object>> AddAIReplyRequest([FromBody] AddAIReplyRequestDto aiReplyRequest)
         {
             object response = await mainAddAIReplyRequestWorkflow.ExecuteAsync(aiReplyRequest);
@@ -50,10 +51,10 @@ namespace CohesiveWizardry.Storage.WebApi.Controllers
         }
 
         /// <summary>
-        /// Get existing request from memory.
+        /// Get existing request to generate an AI reply.
         /// </summary>
         [HttpGet]
-        [Route("{requestId}")]
+        [Route("AIReplyRequest/{requestId}")]
         public async Task<ActionResult<object>> GetAIReply(GetAIReplyRequestDto aiReplyRequest)
         {
             object response = await mainGetAIReplyRequestWorkflow.ExecuteAsync(aiReplyRequest);
@@ -65,25 +66,25 @@ namespace CohesiveWizardry.Storage.WebApi.Controllers
         }
 
         /// <summary>
-        /// Update (full obj) AIReplyRequest to memory.
+        /// Update (full obj) AIReplyRequest to generate an AI reply.
         /// </summary>
         [HttpPut]
-        [Route("{aiReplyIdRequestToUpdate}")]
+        [Route("AIReplyRequest/{aiReplyIdRequestToUpdate}")]
         public async Task<ActionResult<object>> UpdateAIReplyRequest([FromRoute]string aiReplyRequestIdToUpdate, UpdateAIReplyRequestDto aiReplyRequest)
         {
             // Validate request
             if(aiReplyRequest.Id != aiReplyRequestIdToUpdate)
-                throw new BadRequestWebApiException("7c6bf066-461d-457b-86fa-af0b1cf6a6bc", $"AIReplyRequestId [{aiReplyRequestIdToUpdate}] to update didn't match the provided body AIReplyRequestId [{aiReplyRequest.Id}].");
+                throw new BadRequestWebApiException("2888a7b7-6ae6-4fe1-bad3-8a7caeb74ccd", $"AIReplyRequestId [{aiReplyRequestIdToUpdate}] to update didn't match the provided body AIReplyRequestId [{aiReplyRequest.Id}].");
 
             object response = await mainUpdateAIReplyRequestWorkflow.ExecuteAsync(aiReplyRequest);
             return response;
         }
 
         /// <summary>
-        /// Delete AIReplyRequest from memory.
+        /// Delete AIReplyRequest to generate an AI reply.
         /// </summary>
         [HttpDelete]
-        [Route("{aiReplyRequestId}")]
+        [Route("AIReplyRequest/{aiReplyRequestId}")]
         public async Task<ActionResult<object>> DeleteAIReplyRequest(DeleteAIReplyRequestDto aiReplyRequest)
         {
             object response = await mainDeleteAIReplyRequestWorkflow.ExecuteAsync(aiReplyRequest);

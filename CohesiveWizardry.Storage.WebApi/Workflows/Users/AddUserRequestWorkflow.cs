@@ -2,7 +2,7 @@
 using CohesiveWizardry.Common.Diagnostics;
 using CohesiveWizardry.Common.Exceptions.HTTP;
 using CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users;
-using CohesiveWizardry.Storage.WebApi.Workflows.Users;
+using CohesiveWizardry.Storage.WebApi.Workflows.Users.Abstractions;
 
 namespace CohesiveWizardry.Storage.WebApi.Workflows
 {
@@ -21,16 +21,16 @@ namespace CohesiveWizardry.Storage.WebApi.Workflows
             LoggingManager.LogToFile($"78253ec3-4055-4dfe-8c7b-df9d961835fa", $"Adding new User [{addUserDto?.Username}].", logVerbosity: LoggingManager.LogVerbosity.Verbose);
 
             if (string.IsNullOrWhiteSpace(addUserDto?.Id))
-                throw new BadRequestWebApiException("c3e052ce-388f-4840-b011-744acc0c1eb7", $"Invalid Dto. Id is empty. Request payload was incorrect.");
+                throw new BadRequestWebApiException("c3e052ce-388f-4840-b011-744acc0c1eb7", $"Invalid Dto. Id is invalid. Request payload was incorrect.");
 
             if (string.IsNullOrWhiteSpace(addUserDto?.Username))
                 throw new BadRequestWebApiException("0af6b6b3-a3ff-40e5-a56f-f8a9ca952cb1", $"Invalid Dto. Username [{addUserDto?.Username}] was invalid. Request payload was incorrect.");
 
-            // TODO: Get User from storage to check if it already exists
+            // Get User from storage to check if it already exists
             var user = await usersDal.GetUserAsync(addUserDto.Id);
 
             if(user != null)
-                throw new BadRequestWebApiException("e1dc8d69-8bad-4d03-8cad-e4d010ba1a5d", $"User with Id [{addUserDto.Id}] to add already exist in the storage.");
+                throw new ConflictWebApiException("e1dc8d69-8bad-4d03-8cad-e4d010ba1a5d", $"User with Id [{addUserDto.Id}] to add already exist in the storage.");
 
             // Add the new user
             var userResult = await usersDal.AddUserAsync(addUserDto);

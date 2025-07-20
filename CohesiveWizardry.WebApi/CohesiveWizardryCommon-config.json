@@ -1,6 +1,9 @@
 {
     // Critical, Error, Warning, Info, Verbose
     "logVerbosity": "Verbose",
+    "storageSettings": {
+        "apiUrl": "http://127.0.0.1:5235"
+    },
     // Configuration of the available inference servers and the type of actions that can use those inference servers
     "inferenceServersSettings": [
         {

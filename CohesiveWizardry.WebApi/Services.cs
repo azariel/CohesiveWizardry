@@ -1,5 +1,5 @@
-﻿using CohesiveWizardry.Storage.WebApi.Workflows;
-using CohesiveWizardry.WebApi.Workflows;
+﻿using CohesiveWizardry.WebApi.Workflows.InterfaceAIReplyRequest;
+using CohesiveWizardry.WebApi.Workflows.InterfaceAIReplyRequest.Abstractions;
 
 namespace CohesiveWizardry.WebApi
 {
@@ -11,10 +11,10 @@ namespace CohesiveWizardry.WebApi
         internal static void ConfigureServices(IServiceCollection services)
         {
             // Workflows
-            services.AddScoped<IMainAddAIReplyRequestWorkflow, MainAddAIReplyRequestWorkflow>();
-            services.AddScoped<IMainGetAIReplyRequestWorkflow, MainGetAIReplyRequestWorkflow>();
-            services.AddScoped<IMainUpdateAIReplyRequestWorkflow, MainUpdateAIReplyRequestWorkflow>();
-            services.AddScoped<IMainDeleteAIReplyRequestWorkflow, MainDeleteAIReplyRequestWorkflow>();
+            services.AddScoped<IInterfaceAddAIReplyRequestWorkflow, InterfaceAddAIReplyRequestWorkflow>();
+            services.AddScoped<IInterfaceGetAIReplyRequestWorkflow, InterfaceGetAIReplyRequestWorkflow>();
+            services.AddScoped<IInterfaceUpdateAIReplyRequestWorkflow, InterfaceUpdateAIReplyRequestWorkflow>();
+            services.AddScoped<IInterfaceDeleteAIReplyRequestWorkflow, InterfaceDeleteAIReplyRequestWorkflow>();
         }
     }
 }
