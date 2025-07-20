@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using CohesiveWizardry.Common.Inference.Models;
 using CohesiveWizardry.Storage.Dtos.Database;
 
 namespace Cohesive_rp_storage_dtos
@@ -16,6 +17,10 @@ namespace Cohesive_rp_storage_dtos
 
         [JsonPropertyName("createdAtUtc")]
         public DateTimeOffset CreatedAtUtc { get; set; }
+
+        [JsonPropertyName("status")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public LLMGenerationRequestTaskStatus Status { get; set; }
 
         // TODO: add a field that foreign key a selected Character
     }

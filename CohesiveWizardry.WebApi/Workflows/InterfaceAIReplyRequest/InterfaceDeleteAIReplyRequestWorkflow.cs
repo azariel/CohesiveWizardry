@@ -7,6 +7,7 @@ namespace CohesiveWizardry.WebApi.Workflows.InterfaceAIReplyRequest
     {
         public async Task<object> ExecuteAsync(DeleteAIReplyRequestDto dto)
         {
+            // TODO remove from storage and abort it if it was currently inprocess
             return true;
         }
     }

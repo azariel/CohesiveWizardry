@@ -3,7 +3,7 @@ using CohesiveWizardry.Common.Dtos;
 using CohesiveWizardry.Storage.Dtos.Requests;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Cohesive_rp_storage_dtos.Requests.Users
+namespace CohesiveWizardry.Storage.Dtos.Requests.InferenceRequests
 {
     /// <summary>
     /// Represent a request to get an existing InferenceRequest from the database.

@@ -1,5 +1,5 @@
-﻿using Cohesive_rp_storage_dtos.Requests.Users;
-using Cohesive_rp_storage_dtos.Response.Users;
+﻿using CohesiveWizardry.Storage.Dtos.Requests.InferenceRequests;
+using CohesiveWizardry.Storage.Dtos.Responses.InferenceRequests;
 
 namespace CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users
 {

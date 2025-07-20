@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using CohesiveWizardry.Common.Configuration.Context;
 using CohesiveWizardry.Common.Configuration.InferenceServers;
 using static CohesiveWizardry.Common.Diagnostics.LoggingManager;
 
@@ -18,5 +19,8 @@ namespace CohesiveWizardry.Common.Configuration
 
         [JsonPropertyName("inferenceServersSettings")]
         public List<InferenceServerSettings> InferenceServersSettings { get; set; }
+
+        [JsonPropertyName("aiContextSettings")]
+        public AIContextSettings AIContextSettings { get; set; }
     }
 }

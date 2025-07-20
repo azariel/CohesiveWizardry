@@ -2,12 +2,13 @@
 using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Amazon.Runtime;
-using Cohesive_rp_storage_dtos.Requests.Users;
-using Cohesive_rp_storage_dtos.Response.Users;
 using CohesiveWizardry.Common.Configuration;
 using CohesiveWizardry.Common.Diagnostics;
 using CohesiveWizardry.Common.Exceptions;
 using CohesiveWizardry.Common.Serialization;
+using CohesiveWizardry.Storage.Dtos.Requests.Users;
+using CohesiveWizardry.Storage.Dtos.Responses.Conversations;
+using CohesiveWizardry.Storage.Dtos.Responses.Users;
 
 namespace CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users
 {

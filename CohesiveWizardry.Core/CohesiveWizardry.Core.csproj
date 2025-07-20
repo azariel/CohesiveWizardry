@@ -13,4 +13,9 @@
     <PackageReleaseNotes>https://github.com/azariel/CohesiveWizardry</PackageReleaseNotes>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CohesiveWizardry.Common\CohesiveWizardry.Common.csproj" />
+    <ProjectReference Include="..\CohesiveWizardry.Storage.Dtos\CohesiveWizardry.Storage.Dtos.csproj" />
+  </ItemGroup>
+
 </Project>

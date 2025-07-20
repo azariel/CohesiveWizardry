@@ -1,4 +1,4 @@
-﻿using Cohesive_rp_storage_dtos.Requests.Users;
+﻿using CohesiveWizardry.Storage.Dtos.Requests.InferenceRequests;
 
 namespace CohesiveWizardry.WebApi.Workflows.InterfaceAIReplyRequest.Abstractions
 {

@@ -18,10 +18,15 @@ namespace Cohesive_rp_storage_dtos
         [JsonPropertyName("revision")]
         public long Revision { get; set; }
 
-        [JsonConverter(typeof(JsonStringEnumConverter))]
         [JsonPropertyName("actionType")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public LLMGenerationRequestActionType ActionType { get; set; }
 
-        // TODO: add a foreign key to ref the selected chat context
+        [JsonPropertyName("status")]
+        [JsonConverter(typeof(JsonStringEnumConverter))]
+        public LLMGenerationRequestTaskStatus Status { get; set; }
+
+        [JsonPropertyName("conversationId")]
+        public string ConversationId { get; set; }
     }
 }

@@ -4,6 +4,13 @@
     "storageSettings": {
         "apiUrl": "http://127.0.0.1:5235"
     },
+    // Config how the prompt is built for AI inferecement
+    "aiContextSettings": {
+        "systemDirectiveContext": {
+            "header": "**[System Directive]**",
+            "content": "We are doing a roleplay session together. You will play the role of {{char}} and I will play as {{user}}."
+        }
+    },
     // Configuration of the available inference servers and the type of actions that can use those inference servers
     "inferenceServersSettings": [
         {

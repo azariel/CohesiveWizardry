@@ -1,5 +1,5 @@
-﻿using Cohesive_rp_storage_dtos.Requests.Users;
-using CohesiveWizardry.Common.Exceptions.HTTP;
+﻿using CohesiveWizardry.Common.Exceptions.HTTP;
+using CohesiveWizardry.Storage.Dtos.Requests.Users;
 using CohesiveWizardry.Storage.WebApi.Workflows.Users.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 

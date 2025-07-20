@@ -1,6 +1,6 @@
-﻿using Cohesive_rp_storage_dtos.Requests.Users;
-using CohesiveWizardry.Common.Diagnostics;
+﻿using CohesiveWizardry.Common.Diagnostics;
 using CohesiveWizardry.Common.Exceptions.HTTP;
+using CohesiveWizardry.Storage.Dtos.Requests.Users;
 using CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users;
 using CohesiveWizardry.Storage.WebApi.Workflows.Users.Abstractions;
 
@@ -29,9 +29,7 @@ namespace CohesiveWizardry.Storage.WebApi.Workflows
             var user = await usersDal.GetUserAsync(updateUserDto.Id);
 
             if (user == null)
-            {
-                return $"Can't update user. User with id [{updateUserDto.Id}] doesn't exists.";
-            }
+                throw new ConflictWebApiException("6820777c-6fd8-4495-b8fb-e25a32422148", $"Can't update User with Id [{updateUserDto.Id}]. User does not exist in storage.");
 
             // Update the new user
             var userResult = await usersDal.UpdateUserAsync(updateUserDto);

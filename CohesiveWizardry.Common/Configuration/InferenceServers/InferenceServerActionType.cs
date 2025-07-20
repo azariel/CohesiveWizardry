@@ -1,5 +1,8 @@
-﻿namespace CohesiveWizardry.Common.Configuration.InferenceServers
+﻿using System.Text.Json.Serialization;
+
+namespace CohesiveWizardry.Common.Configuration.InferenceServers
 {
+    [JsonConverter(typeof(JsonStringEnumConverter))]
     public enum InferenceServerActionType
     {
         MainChat = 0,

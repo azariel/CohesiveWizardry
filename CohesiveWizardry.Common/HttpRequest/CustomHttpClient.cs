@@ -35,6 +35,9 @@ namespace CohesiveWizardry.Common.HttpRequest
             } catch (HttpRequestException e) when (e.StatusCode != HttpStatusCode.NotFound)
             {
                 LoggingManager.LogToFile("4a7026bd-ad4a-4ba1-ac87-9ccae6d32b23", $"GET HttpRequest to url [{url}] failed. Response status code [{response?.StatusCode}].", e);
+            } catch (HttpRequestException e) when (e.StatusCode == HttpStatusCode.NotFound)
+            {
+                // Ignore
             } finally
             {
                 response?.Dispose();

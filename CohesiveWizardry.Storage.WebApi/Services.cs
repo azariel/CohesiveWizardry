@@ -1,4 +1,5 @@
-﻿using CohesiveWizardry.Storage.WebApi.DataAccessLayer.InferenceRequests;
+﻿using CohesiveWizardry.Storage.WebApi.DataAccessLayer.Conversations;
+using CohesiveWizardry.Storage.WebApi.DataAccessLayer.InferenceRequests;
 using CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users;
 using CohesiveWizardry.Storage.WebApi.Workflows;
 using CohesiveWizardry.Storage.WebApi.Workflows.Users.Abstractions;
@@ -27,9 +28,16 @@ namespace CohesiveWizardry.Storage.WebApi
             services.AddScoped<IUpdateInferenceRequestWorkflow, UpdateInferenceRequestWorkflow>();
             services.AddScoped<IDeleteInferenceRequestWorkflow, DeleteInferenceRequestWorkflow>();
 
+            // --Conversations--
+            services.AddScoped<IAddConversationWorkflow, AddConversationWorkflow>();
+            services.AddScoped<IGetConversationWorkflow, GetConversationWorkflow>();
+            services.AddScoped<IUpdateConversationWorkflow, UpdateConversationWorkflow>();
+            services.AddScoped<IDeleteConversationWorkflow, DeleteConversationWorkflow>();
+
             // Dals
             services.AddScoped<IUsersDal, UsersDal>();
             services.AddScoped<IInferenceRequestsDal, InferenceRequestsDal>();
+            services.AddScoped<IConversationsDal, ConversationsDal>();
         }
     }
 }

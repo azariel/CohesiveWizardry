@@ -1,6 +1,6 @@
-﻿using Cohesive_rp_storage_dtos.Requests.Users;
-using CohesiveWizardry.Common.Diagnostics;
+﻿using CohesiveWizardry.Common.Diagnostics;
 using CohesiveWizardry.Common.Exceptions.HTTP;
+using CohesiveWizardry.Storage.Dtos.Requests.InferenceRequests;
 using CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users;
 using CohesiveWizardry.WebApi.Workflows.InterfaceAIReplyRequest.Abstractions;
 

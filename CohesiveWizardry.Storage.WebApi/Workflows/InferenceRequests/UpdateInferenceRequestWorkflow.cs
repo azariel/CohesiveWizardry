@@ -1,6 +1,6 @@
-﻿using Cohesive_rp_storage_dtos.Requests.Users;
-using CohesiveWizardry.Common.Diagnostics;
+﻿using CohesiveWizardry.Common.Diagnostics;
 using CohesiveWizardry.Common.Exceptions.HTTP;
+using CohesiveWizardry.Storage.Dtos.Requests.InferenceRequests;
 using CohesiveWizardry.Storage.WebApi.DataAccessLayer.Users;
 using CohesiveWizardry.WebApi.Workflows.InterfaceAIReplyRequest.Abstractions;
 
@@ -29,9 +29,7 @@ namespace CohesiveWizardry.WebApi.Workflows.InterfaceAIReplyRequest
             var inferenceRequest = await inferenceRequestsDal.GetInferenceRequestAsync(updateInferenceRequestDto.Id);
 
             if (inferenceRequest == null)
-            {
-                return $"Can't update inference Request. Inference Request with id [{updateInferenceRequestDto.Id}] doesn't exists.";
-            }
+                throw new ConflictWebApiException("6820777c-6fd8-4495-b8fb-e25a32422148", $"Can't update InferenceRequest with Id [{updateInferenceRequestDto.Id}] does not exist in storage.");
 
             // Update the new inference Request
             var inferenceRequestResult = await inferenceRequestsDal.UpdateInferenceRequestAsync(updateInferenceRequestDto);

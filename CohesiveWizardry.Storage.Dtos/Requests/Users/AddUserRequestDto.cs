@@ -1,6 +1,7 @@
-﻿using CohesiveWizardry.Common.Dtos;
+﻿using Cohesive_rp_storage_dtos;
+using CohesiveWizardry.Common.Dtos;
 
-namespace Cohesive_rp_storage_dtos.Requests.Users
+namespace CohesiveWizardry.Storage.Dtos.Requests.Users
 {
     /// <summary>
     /// Represent a request to add a new user to the database.

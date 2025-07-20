@@ -25,6 +25,7 @@ namespace CohesiveWizardry.Storage.WebApi.DataAccessLayer
             {
                 UserDto userDto => JsonSerializer.Serialize(userDto, serializerOptions),
                 InferenceRequestDto inferenceRequestDto => JsonSerializer.Serialize(inferenceRequestDto, serializerOptions),
+                ConversationDto conversationDto => JsonSerializer.Serialize(conversationDto, serializerOptions),
                 _ => throw new Exception($"Type {dataItem.GetType()} is unhandled."),
             };
 

@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CohesiveWizardry.Common\CohesiveWizardry.Common.csproj" />
+    <ProjectReference Include="..\CohesiveWizardry.Core\CohesiveWizardry.Core.csproj" />
     <ProjectReference Include="..\CohesiveWizardry.Storage.Dtos\CohesiveWizardry.Storage.Dtos.csproj" />
     <ProjectReference Include="..\CohesiveWizardry.WebApi.Dtos\CohesiveWizardry.WebApi.Dtos.csproj" />
   </ItemGroup>
